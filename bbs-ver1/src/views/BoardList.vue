@@ -33,24 +33,18 @@
 </template>
 
 <script>
-import axios from 'axios';
+import { mapState } from 'vuex';
 
 export default {
   name: 'BoardList',
-  data() {
-    return {
-      posts: ''
-    };
+  async mounted() {
+    this.$store.dispatch('FETCH_POST');
   },
-  created() {
-    let vm = this;
-    axios
-      .get('https://jsonplaceholder.typicode.com/posts/1/comments')
-      .then(response => {
-        console.log(this.$route.path);
-        vm.posts = response.data;
-      })
-      .catch(err => console.log(err));
+  methods: {
+    // ...mapMutations({setList: 'SET_POST'})
+  },
+  computed: {
+    ...mapState(['posts'])
   }
 };
 </script>
