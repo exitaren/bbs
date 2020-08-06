@@ -6,7 +6,8 @@ Vue.use(Vuex);
 
 export const store = new Vuex.Store({
   state: {
-    posts: []
+    posts: [],
+    pageNum: 1
   },
   mutations: {
     SET_POST(state, list) {
@@ -14,8 +15,18 @@ export const store = new Vuex.Store({
     }
   },
   actions: {
-    FETCH_POST({ commit }) {
-      getPostUrl()
+    FETCH_POST({ state, commit }) {
+      getPostUrl(state.pageNum)
+        .then(({ data }) => {
+          commit('SET_POST', data);
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    },
+    changePage({ state, commit }, number) {
+      state.pageNum = number;
+      getPostUrl(number)
         .then(({ data }) => {
           commit('SET_POST', data);
         })

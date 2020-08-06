@@ -4,8 +4,8 @@ const jp_url = {
   baseUrl: 'https://jsonplaceholder.typicode.com/'
 };
 
-function getPostUrl() {
-  return axios.get(`${jp_url.baseUrl}posts/1/comments`);
+function getPostUrl(pageNum) {
+  return axios.get(`${jp_url.baseUrl}posts/${pageNum}/comments`);
 }
 
 export { getPostUrl };

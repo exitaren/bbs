@@ -16,8 +16,8 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(post, idx) in posts" :key="post.name">
-            <td class="table__number text-center">{{ idx + 1 }}</td>
+          <tr v-for="post in posts" :key="post.id">
+            <td class="table__number text-center">{{ post.id }}</td>
             <td class="table__title text-left">
               <router-link :to="`/bbs/${post.id}`">{{ post.name }}</router-link>
             </td>
@@ -29,22 +29,43 @@
         </tbody>
       </template>
     </v-simple-table>
+    <Pagination
+      :pageNum="pageNum"
+      :pageSize="pageSize"
+      :buttonSize="buttonSize"
+      @pageMove="changePageNum"
+    ></Pagination>
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapState, mapActions, mapMutations } from 'vuex';
+import Pagination from '@/components/Pagination';
 
 export default {
   name: 'BoardList',
+  components: {
+    Pagination
+  },
+  data() {
+    return {
+      listLength: 5,
+      pageSize: 10,
+      buttonSize: 5
+    };
+  },
   async mounted() {
     this.$store.dispatch('FETCH_POST');
   },
   methods: {
-    // ...mapMutations({setList: 'SET_POST'})
+    ...mapActions(['changePage']),
+    changePageNum(pageNum) {
+      this.changePage(pageNum);
+      console.log(pageNum);
+    }
   },
   computed: {
-    ...mapState(['posts'])
+    ...mapState(['posts', 'pageNum'])
   }
 };
 </script>
