@@ -10,7 +10,7 @@ export default new VueRouter({
   routes: [
     { name: 'jsonboard', path: '/', component: BoardList },
     { name: 'jsonboard', path: '/jsonboard', component: BoardList },
-    { name: 'crudboard', path: '/crudboard', component: BoardList },
+    { name: 'openboard', path: '/openboard', component: BoardList },
     { path: '/bbs/:id', component: ListView }
   ]
 });

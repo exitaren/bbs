@@ -10,12 +10,12 @@
             <v-list-item-title>JSON PLACEHOLDER BOARD</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-        <v-list-item link to="/crudboard">
+        <v-list-item link to="/openboard">
           <v-list-item-action>
             <v-icon>mdi-clipboard-edit-outline</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title>CRUD BOARD</v-list-item-title>
+            <v-list-item-title>OPEN BOARD</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list>

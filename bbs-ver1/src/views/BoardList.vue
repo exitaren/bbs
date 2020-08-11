@@ -6,23 +6,32 @@
           <tr>
             <th class="table__number text-center">Number</th>
             <th class="table__title text-left">Title</th>
-            <th class="table__author text-left">author</th>
+            <th class="table__author text-left">Author</th>
             <th
-              v-if="$route.name === 'crudboard'"
+              v-if="$route.name === 'openboard'"
               class="table__time text-left"
             >
               Time
             </th>
           </tr>
         </thead>
-        <tbody>
+        <tbody v-if="$route.name === 'jsonboard'">
           <tr v-for="post in posts" :key="post.id">
             <td class="table__number text-center">{{ post.id }}</td>
             <td class="table__title text-left">
               <router-link :to="`/bbs/${post.id}`">{{ post.name }}</router-link>
             </td>
             <td class="table__author">{{ post.email }}</td>
-            <td v-if="$route.name === 'crudboard'" class="table__time">
+          </tr>
+        </tbody>
+        <tbody v-if="$route.name === 'openboard'">
+          <tr v-for="item in openItems" :key="item">
+            <td class="table__number text-center">{{ item }}</td>
+            <td class="table__title text-left">
+              <router-link :to="`/bbs/${item}`">{{ item }}</router-link>
+            </td>
+            <td class="table__author">{{ item }}</td>
+            <td class="table__time">
               yyyy.mm.dd hh.mm.ss
             </td>
           </tr>
@@ -56,6 +65,7 @@ export default {
   },
   async mounted() {
     this.$store.dispatch('FETCH_POST');
+    this.$store.dispatch('FETCH_OPEN_ITEM');
   },
   methods: {
     ...mapActions(['changePage']),
@@ -65,7 +75,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(['posts', 'pageNum'])
+    ...mapState(['posts', 'pageNum', 'openItems'])
   }
 };
 </script>
