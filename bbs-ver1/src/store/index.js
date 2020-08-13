@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import { getPostUrl, getOpenUrl } from '@/api/index.js';
+import { getPostUrl, getOpenUrl, postOpenUrl } from '@/api/index.js';
 
 Vue.use(Vuex);
 
@@ -15,6 +15,9 @@ export const store = new Vuex.Store({
       state.posts = list;
     },
     GET_OPEN_ITEM(state, list) {
+      state.openItems = list;
+    },
+    POST_OPEN_ITEM(state, list) {
       state.openItems = list;
     }
   },
@@ -32,6 +35,15 @@ export const store = new Vuex.Store({
       getOpenUrl()
         .then(({ data }) => {
           commit('GET_OPEN_ITEM', data);
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    },
+    WRITE_OPEN_ITEM({ state, dispatch }, postData) {
+      postOpenUrl()
+        .then(({ data }) => {
+          dispatch('POST_OPEN_ITEM', (data = postData));
         })
         .catch(err => {
           console.log(err);

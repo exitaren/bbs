@@ -38,6 +38,7 @@
         </tbody>
       </template>
     </v-simple-table>
+    <v-btn @click="toWrite" color="primary">글쓰기</v-btn>
     <Pagination
       :pageNum="pageNum"
       :pageSize="pageSize"
@@ -72,6 +73,9 @@ export default {
     changePageNum(pageNum) {
       this.changePage(pageNum);
       console.log(pageNum);
+    },
+    toWrite() {
+      this.$router.push('/write');
     }
   },
   computed: {

@@ -13,6 +13,10 @@ function getOpenUrl() {
   return axios.get(`${firebaseConfig.databaseURL}/test.json`);
 }
 
+function postOpenUrl(postData) {
+  return axios.post(`${firebaseConfig.databaseURL}/test`, postData);
+}
+
 console.log('databaseURL', firebaseConfig.databaseURL);
 
-export { getPostUrl, getOpenUrl };
+export { getPostUrl, getOpenUrl, postOpenUrl };
