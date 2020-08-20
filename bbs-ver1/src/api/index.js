@@ -10,11 +10,14 @@ function getPostUrl(pageNum) {
 }
 
 function getOpenUrl() {
-  return axios.get(`${firebaseConfig.databaseURL}/test.json`);
+  return axios.get(`${firebaseConfig.databaseURL}/rest/saving-data/test.json`);
 }
 
-function postOpenUrl() {
-  return axios.post(`${firebaseConfig.databaseURL}/test.json`, postData);
+function postOpenUrl(postData) {
+  return axios.post(
+    `${firebaseConfig.databaseURL}/rest/saving-data/test.json`,
+    postData
+  );
 }
 
 // console.log('databaseURL', firebaseConfig.databaseURL);

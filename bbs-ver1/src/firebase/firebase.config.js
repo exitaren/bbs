@@ -1,9 +1,23 @@
+import {
+  API_KEY,
+  AUTH_DOMAIN,
+  DB_URL,
+  PROJECT_ID,
+  STORAGE_BUCKET,
+  MESSAGING_SENDER_ID,
+  APP_ID,
+  MEASUREMENT_ID,
+} from "@/env";
+
 const firebaseConfig = {
-  apiKey: 'AIzaSyDyIjOPC6bVGV5VeVwBKZXqbiALnfGdawk',
-  authDomain: 'sinsa-bbs.firebaseapp.com',
-  databaseURL: 'https://sinsa-bbs.firebaseio.com',
-  projectId: 'sinsa-bbs',
-  storageBucket: 'sinsa-bbs.appspot.com'
+  apiKey: API_KEY,
+  authDomain: AUTH_DOMAIN,
+  databaseURL: DB_URL,
+  projectId: PROJECT_ID,
+  storageBucket: STORAGE_BUCKET,
+  messagingSenderId: MESSAGING_SENDER_ID,
+  appId: APP_ID,
+  measurementId: MEASUREMENT_ID,
 };
 
 export default firebaseConfig;

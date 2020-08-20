@@ -40,10 +40,10 @@ export const store = new Vuex.Store({
           console.log(err);
         });
     },
-    WRITE_OPEN_ITEM({ state, dispatch }, postData) {
-      postOpenUrl()
+    WRITE_OPEN_ITEM({ state, dispatch, commit }, postData) {
+      postOpenUrl({ postData })
         .then(({ data }) => {
-          dispatch('POST_OPEN_ITEM', postData);
+          commit('POST_OPEN_ITEM', data);
         })
         .catch(err => {
           console.log(err);

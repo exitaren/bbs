@@ -25,7 +25,7 @@
           </tr>
         </tbody>
         <tbody v-if="$route.name === 'openboard'">
-          <tr v-for="(item, idx) in openItemList" :key="item[idx]">
+          <tr v-for="(item, idx) in openItems" :key="item[idx]">
             <td class="table__number text-center">{{ item }}</td>
             <td class="table__title text-left">
               <router-link :to="`/bbs/${item}`">{{ item }}</router-link>
@@ -96,8 +96,6 @@ export default {
 }
 .table__number {
   width: 60px;
-}
-.table__title {
 }
 .table__author {
   width: 200px;

@@ -1,0 +1,11 @@
+require("dotenv").config({ debug: process.env.DEBUG });
+console.log({ env: process.env });
+const getEnv = (key) => process.env[`VUE_APP_${key}`];
+export const API_KEY = getEnv("API_KEY");
+export const AUTH_DOMAIN = getEnv("AUTH_DOMAIN");
+export const DB_URL = getEnv("DB_URL");
+export const PROJECT_ID = getEnv("PROJECT_ID");
+export const STORAGE_BUCKET = getEnv("STORAGE_BUCKET");
+export const MESSAGING_SENDER_ID = getEnv("MESSAGING_SENDER_ID");
+export const APP_ID = getEnv("APP_ID");
+export const MEASUREMENT_ID = getEnv("MEASUREMENT_ID");
