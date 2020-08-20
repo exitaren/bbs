@@ -25,7 +25,7 @@
           </tr>
         </tbody>
         <tbody v-if="$route.name === 'openboard'">
-          <tr v-for="item in openItems" :key="item">
+          <tr v-for="(item, idx) in openItems" :key="item[idx]">
             <td class="table__number text-center">{{ item }}</td>
             <td class="table__title text-left">
               <router-link :to="`/bbs/${item}`">{{ item }}</router-link>
