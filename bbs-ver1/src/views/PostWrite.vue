@@ -33,7 +33,6 @@ export default {
     ...mapActions['WRITE_OPEN_ITEM'],
     postWrite() {
       this.$store.dispatch('WRITE_OPEN_ITEM', this.inputText);
-      console.log('WRITE_OPEN_ITEM');
     }
   }
 };

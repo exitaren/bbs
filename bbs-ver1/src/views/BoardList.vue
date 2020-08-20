@@ -25,7 +25,7 @@
           </tr>
         </tbody>
         <tbody v-if="$route.name === 'openboard'">
-          <tr v-for="item in openItems" :key="item">
+          <tr v-for="(item, idx) in openItemList" :key="item[idx]">
             <td class="table__number text-center">{{ item }}</td>
             <td class="table__title text-left">
               <router-link :to="`/bbs/${item}`">{{ item }}</router-link>
@@ -72,14 +72,17 @@ export default {
     ...mapActions(['changePage']),
     changePageNum(pageNum) {
       this.changePage(pageNum);
-      console.log(pageNum);
     },
     toWrite() {
       this.$router.push('/write');
     }
   },
   computed: {
-    ...mapState(['posts', 'pageNum', 'openItems'])
+    ...mapState(['posts', 'pageNum', 'openItems']),
+    openItemList() {
+      console.log(Object.values(this.openItems));
+      return Object.values(this.openItems);
+    }
   }
 };
 </script>

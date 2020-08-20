@@ -43,7 +43,7 @@ export const store = new Vuex.Store({
     WRITE_OPEN_ITEM({ state, dispatch }, postData) {
       postOpenUrl()
         .then(({ data }) => {
-          dispatch('POST_OPEN_ITEM', (data = postData));
+          dispatch('POST_OPEN_ITEM', postData);
         })
         .catch(err => {
           console.log(err);
